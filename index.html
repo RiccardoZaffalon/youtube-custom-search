@@ -1,0 +1,79 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Youtube Searcher</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<link href="//fonts.googleapis.com/css?family=Muli:300,400,700" rel="stylesheet">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="">
+	<!--[if lt IE 8]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+	<div class="wrapper" id="main-page">
+		<h1>YouTube Searcher</h1>
+		<p>Find the most popular videos of a selected channel in a custom period of time.</p>
+		<p class="examples">
+			For example: <a href="" data-set-time="past month">past month</a>, <a href="" data-set-time="past year">past year</a>.
+		</p>
+		<div id="search">
+			<form action="" id="search__form" class="search__form" autocomplete="off">
+				<div class="search__form-group">
+					<label for="channel-search">Channel ID: </label><span id="show-modal">?</span>
+					<input type="search" id="channel-search" placeholder="Channel ID Here" value="UCCbfB3cQtkEAiKfdRQnfQvw">
+				</div>
+				<div class="search__form-group">
+					<label for="date-from">From:</label>
+					<input type="date" id="date-from">
+				</div>
+				<div class="search__form-group">
+					<label for="date-to">To:</label>
+					<input type="date" id="date-to">
+				</div>
+				<div class="search__form-group">
+					<input type="submit" value="Search">
+				</div>
+			</form>
+		</div>
+		<div id="results"></div>
+	</div>
+	<div id="search-channel-modal">
+		<p>Search for a channel name and select it to use its ID:</p>
+		<form id="search-channel__form" class="search__form" autocomplete="off">
+			<div class="search__form-group">
+				<label for="channel-name-search">Channel name:</label>
+				<input type="search" id="channel-name-search" placeholder="Channel Name" value="Jesse Cox">
+			</div>
+			<div class="search__form-group">
+				<input type="submit" value="Search">
+			</div>
+		</form>
+		<div id="channel-results"></div>
+	</div>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+	<script id="result-template" type="text/x-handlebars-template">
+		<a class="entry__result" href={{href}} target="_blank">
+			<img class="entry__thumbnail" src={{thumb}} alt="">
+			<h3 class="entry__title">{{title}}</h3>
+			<p class="entry__date">{{date}}</p>
+		</a>
+	</script>
+	<script id="channel-template" type="text/x-handlebars-template">
+		<div data-channel-id={{id}}>
+			<h3 class="entry__channel-title">{{title}}</h3>
+			<img class="entry__channel-thumbnail" src={{thumb}} alt="">
+		</div>
+	</script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
+	<script src="js/script.js"></script>
+</body>
+
+</html>
