@@ -28,7 +28,11 @@
 			<form action="" id="search__form" class="search__form" autocomplete="off">
 				<div class="search__form-group">
 					<label for="channel-search">Channel ID: </label><span id="show-modal">?</span>
-					<input type="search" id="channel-search" placeholder="Channel ID Here" value="UCCbfB3cQtkEAiKfdRQnfQvw">
+					<input type="search" id="channel-search" placeholder="Channel ID Here" value="UCHnyfMqiRRG1u-2MsSQLbXA">
+				</div>
+				<div class="search__form-group">
+					<label for="query-search">Search filter: </label>
+					<input type="search" id="query-search" placeholder="gravity">
 				</div>
 				<div class="search__form-group">
 					<label for="date-from">From:</label>
@@ -43,6 +47,7 @@
 				</div>
 			</form>
 		</div>
+		<h2 id="channel-name-result"></h2>
 		<div id="results"></div>
 	</div>
 	<div id="search-channel-modal">
@@ -50,7 +55,7 @@
 		<form id="search-channel__form" class="search__form" autocomplete="off">
 			<div class="search__form-group">
 				<label for="channel-name-search">Channel name:</label>
-				<input type="search" id="channel-name-search" placeholder="Channel Name" value="Jesse Cox">
+				<input type="search" id="channel-name-search" placeholder="Channel Name" value="Veritasium">
 			</div>
 			<div class="search__form-group">
 				<input type="submit" value="Search">
