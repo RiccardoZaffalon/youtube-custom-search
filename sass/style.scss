@@ -57,6 +57,10 @@ a {
 .examples a {
 	color: $accent;
 	text-decoration: underline;
+	transition: color 150ms ease;
+	&:active {
+		color: darken($accent, 15%);
+	}
 }
 
 .search__form {
@@ -89,6 +93,9 @@ a {
 		label {
 			font-weight: bold;
 			margin-bottom: 0.375em;
+		}
+		&.changed {
+			animation: underline 1s ease;
 		}
 	}
 	input[type="submit"] {
@@ -230,5 +237,11 @@ body.modal-enter {
 		#search-channel-modal {
 			opacity: 1;
 		}
+	}
+}
+
+@keyframes underline {
+	50% {
+		box-shadow: 0 -2px $accent inset;
 	}
 }

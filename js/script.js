@@ -54,16 +54,34 @@ timeSetters.forEach(setter => {
 		e.preventDefault();
 		switch (e.target.dataset.setTime) {
 			case 'past month':
+				if (dateToNode.value != moment().format("YYYY-MM-DD")) dateToNode.parentNode.classList.add('changed');
 				dateToNode.value = moment().format("YYYY-MM-DD");
-				dateFromNode.value = moment().subtract(1, 'months').format("YYYY-MM-DD");
+				if (dateFromNode.value != moment().subtract(1, 'months').format("YYYY-MM-DD")) dateFromNode.parentNode.classList.add('changed');
+				dateFromNode.value = moment().subtract(1, 'months').format("YYYY-MM-DD");				
+				setTimeout(() => {
+					dateToNode.parentNode.classList.remove('changed');
+					dateFromNode.parentNode.classList.remove('changed');					
+				}, 1000)
 				break;
 			case 'past year':
+				if (dateToNode.value != moment().format("YYYY-MM-DD")) dateToNode.parentNode.classList.add('changed');
 				dateToNode.value = moment().format("YYYY-MM-DD");
-				dateFromNode.value = moment().subtract(1, 'years').format("YYYY-MM-DD");
+				if (dateFromNode.value != moment().subtract(1, 'years').format("YYYY-MM-DD")) dateFromNode.parentNode.classList.add('changed');
+				dateFromNode.value = moment().subtract(1, 'years').format("YYYY-MM-DD");		
+				setTimeout(() => {
+					dateToNode.parentNode.classList.remove('changed');
+					dateFromNode.parentNode.classList.remove('changed');					
+				}, 1000)
 				break;
-			default:
+			default:				
+				if (dateToNode.value != moment().format("YYYY-MM-DD")) dateToNode.parentNode.classList.add('changed');
 				dateToNode.value = moment().format("YYYY-MM-DD");
-				dateFromNode.value = moment().subtract(1, 'months').format("YYYY-MM-DD");
+				if (dateFromNode.value != moment().subtract(1, 'months').format("YYYY-MM-DD")) dateFromNode.parentNode.classList.add('changed');
+				dateFromNode.value = moment().subtract(1, 'months').format("YYYY-MM-DD");		
+				setTimeout(() => {
+					dateToNode.parentNode.classList.remove('changed');
+					dateFromNode.parentNode.classList.remove('changed');					
+				}, 1000)
 				break;
 		}
 	})
@@ -76,7 +94,7 @@ function handleSearch(e) {
 	let dateFrom = dateFromNode.value;
 	let dateTo = dateToNode.value;
 
-	let url = `https://www.googleapis.com/youtube/v3/search?type=video&publishedAfter=${dateFrom}T00:00:00Z&publishedBefore=${dateTo}T00:00:00Z&channelId=${channelId}&key=${key}&order=viewCount&maxResults=16&part=snippet`;
+	let url = `https://www.googleapis.com/youtube/v3/search?type=video&publishedAfter=${dateFrom}T00:00:00Z&publishedBefore=${dateTo}T00:00:00Z&channelId=${channelId}&key=${key}&order=viewCount&maxResults=12&part=snippet`;
 	if(queryNode.value) url += `&q=${queryNode.value}`;
 
 	fetch(url, config)
