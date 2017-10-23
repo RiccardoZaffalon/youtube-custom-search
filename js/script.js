@@ -20,7 +20,9 @@ const timeSetters = document.querySelectorAll('[data-set-time]');
 const form = document.getElementById('search__form');
 const channelForm = document.getElementById('search-channel__form');
 const channelIdNode = document.getElementById('channel-search');
+const queryNode = document.getElementById('query-search');
 const channelNameNode = document.getElementById('channel-name-search');
+const channelNameResultNode = document.getElementById('channel-name-result');
 const dateFromNode = document.getElementById('date-from');
 const dateToNode = document.getElementById('date-to');
 const modal = document.getElementById('search-channel-modal');
@@ -75,13 +77,16 @@ function handleSearch(e) {
 	let dateTo = dateToNode.value;
 
 	let url = `https://www.googleapis.com/youtube/v3/search?type=video&publishedAfter=${dateFrom}T00:00:00Z&publishedBefore=${dateTo}T00:00:00Z&channelId=${channelId}&key=${key}&order=viewCount&maxResults=16&part=snippet`;
+	if(queryNode.value) url += `&q=${queryNode.value}`;
 
 	fetch(url, config)
 		.then(res => {
 			results.innerHTML = '';
+			channelNameResultNode.textContent = '';
 			return res.json();
 		})
 		.then(json => {
+			channelNameResultNode.textContent = json.items[0].snippet.channelTitle;
 			json.items.map(item => {
 				const href = `https://www.youtube.com/watch?v=${item.id.videoId}`;
 				const context = { title: item.snippet.title, body: item.snippet.description, thumb: item.snippet.thumbnails.medium.url, href: href, date: moment(item.snippet.publishedAt).format("MMMM Do YYYY, hA") };
@@ -89,6 +94,11 @@ function handleSearch(e) {
 				html.className = 'results__entry';
 				html.innerHTML = template(context);
 				results.appendChild(html);
+			})
+		}).then(() => {
+			const resultImages = results.querySelectorAll('img');
+			resultImages.forEach(i => {
+				i.onload = () => i.style.setProperty('opacity', 1);
 			})
 		})
 }
@@ -112,6 +122,12 @@ function handleChannelSearch(e) {
 				html.className = 'channels__entry';
 				html.innerHTML = chTemplate(context);
 				chResults.appendChild(html);
+			})
+		})
+		.then(() => {
+			const resultImages = chResults.querySelectorAll('img');
+			resultImages.forEach(i => {
+				i.onload = () => i.style.setProperty('opacity', 1);
 			})
 		})
 }

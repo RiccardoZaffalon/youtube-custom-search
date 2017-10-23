@@ -67,6 +67,7 @@ a {
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	input,
 	label {
+		display: block;
 		border: none;
 		outline: none;
 		width: 100%;
@@ -76,6 +77,10 @@ a {
 		border-left: 1px solid $border-color;
 		padding: 8px 16px;
 		position: relative;
+		&:nth-of-type(3),
+		&:nth-of-type(4) {
+			flex: 2;
+		}
 		&:last-of-type {
 			flex: 1;
 			border-right: 1px solid $border-color;
@@ -83,7 +88,7 @@ a {
 		}
 		label {
 			font-weight: bold;
-			margin-bottom: 0.5em;
+			margin-bottom: 0.375em;
 		}
 	}
 	input[type="submit"] {
@@ -95,10 +100,14 @@ a {
 	}
 }
 
+#channel-name-result {
+	margin-top: 48px;
+}
+
 #results {
 	display: flex;
 	flex-wrap: wrap;
-	margin-top: 60px;
+	margin-top: 16px;
 }
 
 .results__entry {
@@ -125,10 +134,16 @@ a {
 	font-size: 0.865em;
 }
 
+.entry__thumbnail {
+	min-height: 138px;
+}
+
 .entry__thumbnail,
 .entry__channel-thumbnail {
 	width: 100%;
 	height: auto;
+	opacity: 0;
+	transition: opacity 250ms ease;
 }
 
 #main-page {
@@ -197,11 +212,13 @@ a {
 
 .entry__channel-thumbnail {
 	width: 90px;
+	height: 90px;
 	border-radius: 50%;
 	margin-top: 1em;
 }
 
 body.modal-enter {
+	overflow: hidden;
 	#search-channel-modal {
 		display: block;
 	}
