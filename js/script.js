@@ -1,6 +1,6 @@
-var headers = new Headers();
+const headers = new Headers();
 
-var config = {
+const config = {
 	method: 'GET',
 	headers: headers,
 	mode: 'cors',
