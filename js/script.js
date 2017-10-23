@@ -1,12 +1,12 @@
-var headers = new Headers();
+const headers = new Headers();
 
-var config = {
+const config = {
 	method: 'GET',
 	headers: headers,
 	mode: 'cors',
 	cache: 'default'
 };
-const key = 'AIzaSyA1Yi7OkvvvM1VE27Tufcet79D92Kcyshw';
+const key = 'AIzaSyDpy7mkL0wfA4pkoN9V01H4s_-0JZgulyo';
 
 // Handlebars
 const source = document.getElementById('result-template').innerHTML;
