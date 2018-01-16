@@ -32,7 +32,7 @@ const chResults = document.getElementById('channel-results');
 
 // Initial values
 dateToNode.value = moment().format("YYYY-MM-DD");
-dateFromNode.value = moment().subtract(1, 'months').format("YYYY-MM-DD");
+dateFromNode.value = moment().subtract(1, 'years').format("YYYY-MM-DD");
 
 // Evts Listeners
 form.addEventListener('submit', handleSearch);
