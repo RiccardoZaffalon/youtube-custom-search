@@ -119,6 +119,10 @@ function handleSearch(e) {
 				i.onload = () => i.style.setProperty('opacity', 1);
 			})
 		})
+		.catch((e) => {
+			console.log('Error: ', e);
+			channelNameResultNode.textContent = "No result";
+		})
 }
 
 function handleChannelSearch(e) {
