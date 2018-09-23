@@ -43,12 +43,22 @@
 					<input type="date" id="date-to">
 				</div>
 				<div class="search__form-group">
+					<label for="limit">Limit:</label>
+					<input type="number" id="limit" value="12">
+				</div>
+				<div class="search__form-group">
 					<input type="submit" value="Search">
 				</div>
 			</form>
 		</div>
 		<h2 id="channel-name-result"></h2>
-		<div id="results"></div>
+		<div id="results"><div class="results__entry">
+		<a class="entry__result" href="https://www.youtube.com/watch?v=_k9egfWvb7Y" target="_blank">
+			<img class="entry__thumbnail" src="https://i.ytimg.com/vi/_k9egfWvb7Y/mqdefault.jpg" alt="" style="opacity: 1;">
+			<h3 class="entry__title">World's Heaviest Weight</h3>
+			<p class="entry__date">May 24th 2017, 4PM</p>
+		</a>
+	</div></div>
 	</div>
 	<div id="search-channel-modal">
 		<p>Search for a channel name and select it to use its ID:</p>
