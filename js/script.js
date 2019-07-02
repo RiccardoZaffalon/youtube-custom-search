@@ -144,11 +144,12 @@ function handleSearch(e) {
 			return res.json();
 		})
 		.then(json => {
+			console.log(json);
 			channelNameResultNode.textContent = json.items[0].snippet.channelTitle;
 			json.items.map(item => {
 				const href = `https://www.youtube.com/watch?v=${item.id.videoId}`;
 				const context = {
-					title: item.snippet.title,
+					title: decodeHtml(item.snippet.title),
 					body: item.snippet.description,
 					thumb: item.snippet.thumbnails.medium.url,
 					href: href,
@@ -223,4 +224,10 @@ function showModal() {
 	document.body.classList.add("modal-enter");
 	setTimeout(() => document.body.classList.add("modal-enter-active"), 150);
 	channelNameNode.select();
+}
+
+function decodeHtml(html) {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
 }
